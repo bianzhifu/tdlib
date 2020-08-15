@@ -1,0 +1,41 @@
+name: Build And Publish tdlib
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@master
+    - name: tdlib Publish to Registry
+      uses: elgohr/Publish-Docker-Github-Action@2.19
+      with:
+        name: bianzhifu/tdlib
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        dockerfile: Dockerfile
+        tags: "latest,tdlib1.6.0-alpine3.12"
+    - name: tdlib_build Publish to Registry
+      uses: elgohr/Publish-Docker-Github-Action@2.19
+      with:
+        name: bianzhifu/tgdblib
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        dockerfile: tdlib-build.Dockerfile
+        tags: "build_latest,build_go1.15_tdlib1.6.0-alpine3.12"
+    - name: tdlib_run Publish to Registry
+      uses: elgohr/Publish-Docker-Github-Action@2.19
+      with:
+        name: bianzhifu/tgdblib
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        dockerfile: tdlib-run.Dockerfile
+        tags: "run_latest,run_tdlib1.6.0-alpine3.12"
