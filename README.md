@@ -1,2 +1,2 @@
 # tdlib
-Telegram Database Library
+[Telegram Database Library](https://core.telegram.org/tdlib)
