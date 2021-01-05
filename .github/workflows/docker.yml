@@ -22,7 +22,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         dockerfile: Dockerfile
-        tags: "latest,tdlib1.6.0-alpine3.12"
+        tags: "latest"
     - name: tdlib_build Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@2.19
       with:
@@ -30,7 +30,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         dockerfile: tdlib-build.Dockerfile
-        tags: "build_latest,build_go1.15_tdlib1.6.0-alpine3.12"
+        tags: "build_latest"
     - name: tdlib_run Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@2.19
       with:
@@ -38,4 +38,4 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         dockerfile: tdlib-run.Dockerfile
-        tags: "run_latest,run_tdlib1.6.0-alpine3.12"
+        tags: "run_latest"
