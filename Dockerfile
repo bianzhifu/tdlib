@@ -5,7 +5,7 @@ RUN apk update \
 	&& apk add --update alpine-sdk linux-headers git zlib-dev openssl-dev gperf php php-ctype cmake \
 	&& git clone https://github.com/tdlib/td.git \
 	&& cd td \
-	&& git checkout v1.6.0 \
+	&& git checkout v1.7.0 \
 	&& rm -rf build \
 	&& mkdir build \
 	&& cd build \
